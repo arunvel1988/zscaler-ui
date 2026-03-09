@@ -1,0 +1,30 @@
+################
+
+
+
+sudo apt update -y
+sudo apt install squid -y
+
+
+sudo systemctl start squid
+
+
+sudo nano /etc/squid/squid.conf
+
+acl localnet src 192.168.0.0/16
+
+http_access allow localnet
+
+sudo systemctl restart squid
+###################
+
+
+sudo nano /etc/squid/squid.conf
+
+acl blocked_sites dstdomain .facebook.com
+http_access deny blocked_sites
+
+sudo systemctl restart squid
+
+####################
+
